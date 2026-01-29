@@ -2,7 +2,7 @@ import { ArrowDown } from "lucide-react";
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 bg-[url('public/assets/images/image1.jpg')]
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-4 bg-[url('/assets/images/image1.jpg')]
              bg-cover bg-center bg-no-repeat">
       {/* 🎥 Background Video */}
       {/* <video

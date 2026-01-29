@@ -6,7 +6,7 @@ export const SeeMoreWork = () => {
     { label: "Instagram", to: "/instagram", image: "/assets/images/image1.jpg" },
     { label: "Movies", to: "/movies", image: "/assets/images/image1.jpg" },
     { label: "Fashion", to: "/fashion", image: "/assets/images/image1.jpg" },
-  ];
+  ]
 
   return (
     // <section className="relative py-24 bg-black text-white overflow-hidden">

@@ -3,9 +3,9 @@ import { ArrowUpRight } from "lucide-react";
 
 export const SeeMoreWork = () => {
   const links = [
-    { label: "Instagram", to: "/instagram", image: "public/assets/images/image1.jpg" },
-    { label: "Movies", to: "/movies", image: "public/assets/images/image1.jpg" },
-    { label: "Fashion", to: "/fashion", image: "public/assets/images/image1.jpg" },
+    { label: "Instagram", to: "/instagram", image: "/assets/images/image1.jpg" },
+    { label: "Movies", to: "/movies", image: "/assets/images/image1.jpg" },
+    { label: "Fashion", to: "/fashion", image: "/assets/images/image1.jpg" },
   ];
 
   return (

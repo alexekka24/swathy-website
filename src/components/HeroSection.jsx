@@ -8,7 +8,7 @@ export const HeroSection = () => {
       {/* <video
         // ref={heroRef}
         className="absolute inset-0 h-full w-full object-cover z-0"
-        src="../public/assets/videos/showReel.mp4"
+        src="/assets/videos/showReel.mp4"
         autoPlay
         loop
         muted

@@ -4,7 +4,7 @@ export const ShowReelSection = () => {
       {/* 🎥 Background Video */}
       <video
         className="max-h-screen max-w-full object-contain z-0"
-        src="../public/assets/videos/showReel.mp4"
+        src="/assets/videos/showReel.mp4"
         autoPlay
         loop
         muted

@@ -7,14 +7,13 @@ import { ProjectCarouselModal } from "../components/ProjectCarouselModal";
 export const CategoryPage = () => {
   const { category } = useParams();
   const data = categories[category];
-  console.log(data);
-  console.log(category);
+
+  const [activeIndex, setActiveIndex] = useState(null);
 
   if (!data) {
     return <Navigate to="/" replace />;
   }
 
-  const [activeIndex, setActiveIndex] = useState(null);
   const closeModal = () => setActiveIndex(null);
 
   return (
@@ -22,7 +21,7 @@ export const CategoryPage = () => {
       {/* Page Header / Intro */}
       <section className="relative flex items-center justify-center px-6 py-24 md:py-32">
         <div className="max-w-4xl text-center">
-          <h1 className="max-sm:text-6xl md:text-9xl lg:text-[15rem] font-semibold tracking-tight text-shadow-md text-shadow-white/30 font-display font-[Rubik]">
+          <h1 className="font-techno max-sm:text-4xl md:text-6xl lg:text-[10rem] tracking-tight text-shadow-md text-shadow-white/30 font-display animate-bounce">
             {data.title}
           </h1>
           <p className="mt-4 text-white/70 text-base md:text-lg">

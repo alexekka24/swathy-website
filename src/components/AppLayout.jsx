@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import WhatsAppFloatingButton from "./WhatsAppFloatingButton";
+import CinematicSvgBackground from "./CinematicSvgBackground";
 
 export const AppLayout = () => {
   const location = useLocation();
@@ -21,6 +22,7 @@ export const AppLayout = () => {
 
   return (
     <div className="min-h-screen">
+      {/* <CinematicSvgBackground /> */}
       <Navbar />
 
       {/* 🔥 Animated Routes */}

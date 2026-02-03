@@ -1,7 +1,30 @@
 @import "tailwindcss";
 
-html, body {
-  font-family: "Poppins", "Rubik", "BBH Bogle", "BBH Bartle", sans-serif;
+@font-face {
+  font-family: "TheLedDisplaySt";
+  src: url("/fonts/TheLedDisplaySt.woff2") format("woff2"),
+       url("/fonts/TheLedDisplaySt.woff") format("woff");
+  font-display: swap;     
+} 
+
+@font-face {
+  font-family: "Rosellinda";
+  src: url("/fonts/RoasellindaAlyamore.otf") format("otf");
+}
+
+@theme {
+  --font-sans: "Poppins", ui-sans-serif, system-ui;
+  --font-techno: TheLedDisplaySt, "sans-serif";
+  --font-pixel: "Press Start 2P", monospace;
+  --font-retro: "VT323", monospace;
+  --font-cursive: "Allura", cursive;
+  --font-rose: Rosellinda, "sans-serif";
+}
+
+
+html,
+body {
+  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
   background-color: #212121;
 }
 
@@ -61,6 +84,10 @@ html, body {
 }
 
 @layer base {
+  html {
+    @apply font-sans;
+  }
+
   :root {
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
@@ -94,10 +121,31 @@ html, body {
 
     body {
       @apply bg-background text-foreground transition-colors duration-300;
-      font-feature-settings: "rlig" 1, "calt" 1;
+      font-feature-settings:
+        "rlig" 1,
+        "calt" 1;
     }
   }
 }
+
+.cinematic-bg {
+  background: linear-gradient(
+    -45deg,
+    #050505,
+    #0b1020,
+    #120b1a,
+    #050505
+  );
+  background-size: 400% 400%;
+  animation: gradientMove 25s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 
 @utility container {
   margin-inline: auto;
@@ -132,7 +180,7 @@ html, body {
 
 @utility gradient-border {
   @apply relative rounded-md;
-  background: linear-gradiend(to right, hsl(var(--card)), hsl(var(--card)));
+  background: linear-gradient(to right, hsl(var(--card)), hsl(var(--card)));
   background-clip: padding-box;
   border: 1px solid transparent;
 }
@@ -141,19 +189,40 @@ html, body {
   @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95;
 }
 
-@utility star {
-  @apply absolute rounded-full bg-white;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
-}
-
-@utility meteor {
-  @apply absolute bg-linear-to-r from-white via-white to-transparent rounded-full;
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.4);
-}
-
 #root {
   max-width: 100%;
   margin: 0 auto;
   padding: 0;
   text-align: center;
+}
+
+
+.film-grain {
+  background-image: url("/assets/images/grain.png");
+  background-repeat: repeat;
+  opacity: 0.4;
+  mix-blend-mode: overlay;
+  /* width: 820vw; */
+  animation: grainMove 1.2s steps(6) infinite;
+}
+
+@keyframes grainMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  20% {
+    transform: translate(-5%, -5%);
+  }
+  40% {
+    transform: translate(5%, -10%);
+  }
+  60% {
+    transform: translate(-10%, 5%);
+  }
+  80% {
+    transform: translate(10%, 10%);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
 }

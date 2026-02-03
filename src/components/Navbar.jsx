@@ -39,22 +39,22 @@ export const Navbar = () => {
     <>
       <nav
         className={cn(
-          "fixed w-full z-40 transition-all duration-300 text-white h-20 flex items-center border-b border-white/10",
-          isScrolled ? "backdrop-blur-md shdow-xs h-15 bg-black" : ""
+          "fixed w-full z-40 transition-all duration-300 text-white h-30 flex items-center",
+          isScrolled ? "shadow-xs h-30" : ""
         )}
       >
         <div className="container flex items-center justify-between">
           <NavLink
             to="/"
-            className="text-xl font-bold text-primary flex items-center"
+            className="text-2xl md:text-4xl text-primary flex items-center"
           >
             <span className="relative z-10">
-              <span className="text-white">Swathy Deepak</span>
+              <span className="text-white font-cursive">Swathy Deepak</span>
             </span>
           </NavLink>
 
           {/* {DESKTOP NAV} */}
-          <div className="hidden md:flex space-x-8 md:items-center">
+          {/* <div className="hidden md:flex space-x-8 md:items-center">
             {navItems.map((item, key) =>
               item.href ? (
                 <NavLink
@@ -74,35 +74,38 @@ export const Navbar = () => {
                 </button>
               )
             )}
-          </div>
+          </div> */}
 
           {/* MOBILE NAV */}
 
           <button
-            className="md:hidden p-2 text-white z-50 cursor-pointer rounded-full hover:bg-white/10 transition"
+            className="p-2 text-red-500 z-50 cursor-pointer rounded-2xl border-transparent hover:border hover:border-red-200 transition duration-200"
             aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
             {" "}
             {isMenuOpen ? (
-              <X size={24} />
+              <X size={40} />
             ) : (
-              <Menu size={24} />
+              <h1 className="font-techno text-2xl flex flex-col md:text-5xl ">
+                <div>ME</div>
+                <div>NU.</div>
+              </h1>
             )}
           </button>
 
           <div
             className={cn(
-              "fixed top-0 left-0 w-screen h-dvh bg-black z-4",
+              "fixed top-0 right-0 w-[80vw] h-dvh bg-black z-4",
               "flex flex-col items-center justify-center",
-              "transition-all duration-300 md:hidden",
+              "transition-all duration-300",
               isMenuOpen
                 ? "opacity-100 pointer-events-auto"
                 : "opacity-0 pointer-events-none"
             )}
           >
             <div
-              className="flex flex-col space-y-8 text-xl"
+              className="text-xl md:text-3xl flex flex-col space-y-8"
               onClick={() => setIsMenuOpen(false)}
             >
               {navItems.map((item, key) =>
@@ -111,7 +114,7 @@ export const Navbar = () => {
                     key={key}
                     to={item.href}
                     onClick={() => setIsMenuOpen(false)}
-                    className="text-white hover:text-white/50 transition"
+                    className=" text-white hover:text-white/50 transition"
                   >
                     {item.name}
                   </NavLink>

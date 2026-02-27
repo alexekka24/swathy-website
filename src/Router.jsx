@@ -13,15 +13,18 @@ import { Home } from "./pages/Home";
 
 export const router = createBrowserRouter([
   {
+    path: "/",
     element: <AppLayout />,
     children: [
       {
-        path: "/",
-        element: <Home />
+        index: true,
+        element: <Home />,
+        handle: { title: "Swathy Deepak"},
       },
       {
         path: "/:category",
         element: <CategoryPage />,
+        handle: { title: {}}
       },
     ],
   },

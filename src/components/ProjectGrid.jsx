@@ -39,7 +39,7 @@
 export const ProjectGrid = ({
   items = [],          // 👈 default value
   category,
-  onItemClick = () => {}
+  onItemClick = () => { }
 }) => {
   if (!items.length) {
     return (
@@ -71,12 +71,16 @@ export const ProjectGrid = ({
               />
             </div>
 
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition" />
+            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <p className="text-lg font-medium">{item.title}</p>
+            <div className="absolute bottom-6 left-6 right-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+              <p className="text-2xl font-techno uppercase tracking-tighter leading-tight group-hover:text-red-500 transition-colors">
+                {item.title}
+              </p>
               {item.brand && (
-                <p className="text-sm text-white/70">{item.brand}</p>
+                <p className="text-xs text-white/50 uppercase tracking-[0.2em] mt-1 font-light">
+                  {item.brand}
+                </p>
               )}
             </div>
           </button>
@@ -85,3 +89,4 @@ export const ProjectGrid = ({
     </div>
   );
 };
+

@@ -1,4 +1,4 @@
-import { X, Instagram, Youtube, Linkedin, Check } from "lucide-react";
+import { X, Instagram, Youtube, Linkedin, Check, Mail, MessageSquare } from "lucide-react";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -29,7 +29,7 @@ export const ContactSheet = ({ isOpen, onClose }) => {
         <>
           {/* Backdrop */}
           <motion.div
-            className="fixed inset-0 z-40 bg-black/50"
+            className="fixed inset-0 z-40 bg-black/80 backdrop-blur-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -38,92 +38,101 @@ export const ContactSheet = ({ isOpen, onClose }) => {
 
           {/* Sheet */}
           <motion.div
-            className="fixed inset-x-0 bottom-0 z-50"
-            initial={{ y: "100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "100%" }}
-            transition={{
-              type: "spring",
-              stiffness: 260,
-              damping: 28,
-            }}
-            drag="y"
-            dragConstraints={{ top: 0 }}
-            dragElastic={0.2}
-            onDragEnd={(event, info) => {
-              if (info.offset.y > 120 || info.velocity.y > 800) {
-                onClose();
-              }
-            }}
+            className="fixed inset-x-4 bottom-4 md:inset-x-auto md:right-8 md:bottom-8 z-50 md:w-[450px]"
+            initial={{ y: "100%", opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: "100%", opacity: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="rounded-t-3xl bg-black text-white px-6 py-10 shadow-2xl">
-              {/* Handle */}
-              <div className="mx-auto mb-6 h-1.5 w-12 rounded-full bg-white/20" />
+            <div className="relative overflow-hidden rounded-3xl bg-neutral-900 border border-white/10 text-white p-8 md:p-10 shadow-3xl">
+              {/* Background Texture */}
+              <div className="absolute inset-0 film-grain pointer-events-none opacity-20" />
 
-              {/* Header */}
-              <div className="flex items-center justify-between">
-                <h2 className="text-3xl font-semibold tracking-tight">
-                  Let’s create something together
-                </h2>
-                <button
-                  onClick={onClose}
-                  className="hidden lg:block text-white/60 hover:text-white transition cursor-pointer"
-                >
-                  <X size={24} />
-                </button>
-              </div>
-
-              {/* Email (copyable) */}
+              {/* Close Button */}
               <button
-                onClick={handleCopyEmail}
-                className="mt-10 mx-auto flex items-center justify-center gap-3 text-center text-xl font-medium hover:text-red-600 transition cursor-pointer"
+                onClick={onClose}
+                className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors cursor-pointer"
               >
-                {EMAIL}
-                {copied && (
-                  <span className="flex items-center gap-1 text-sm text-green-400">
-                    <Check size={16} /> Copied
-                  </span>
-                )}
+                <X size={20} />
               </button>
 
-              {/* Meta */}
-              <p className="mt-4 text-white/60">Working worldwide</p>
+              <div className="relative z-10 space-y-8">
+                {/* Header */}
+                <div className="space-y-2">
+                  <h2 className="font-techno text-2xl md:text-3xl uppercase tracking-tighter leading-none">
+                    Let’s create <span className="text-red-500 italic block">Together.</span>
+                  </h2>
+                  <p className="font-cursive text-white/50 text-lg">Visual storytelling through motion.</p>
+                </div>
 
-              <p className="mt-2 text-white/60">
-                Brand Films · Commercials · Fashion · Social Content
-              </p>
+                {/* Email (copyable) */}
+                <div className="space-y-3">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30">Direct Email</p>
+                  <button
+                    onClick={handleCopyEmail}
+                    className="group relative flex items-center gap-4 w-full p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-red-500/30 transition-all cursor-pointer overflow-hidden"
+                  >
+                    <div className="absolute inset-0 bg-red-500/5 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <Mail size={18} className="text-red-500" />
+                    <span className="font-techno text-lg md:text-xl tracking-tight text-white/80 group-hover:text-white transition-colors">
+                      {EMAIL}
+                    </span>
+                    {copied && (
+                      <motion.span
+                        initial={{ opacity: 0, x: 10 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        className="ml-auto flex items-center gap-1 text-[10px] uppercase tracking-widest text-green-400 font-techno"
+                      >
+                        <Check size={12} /> Copied
+                      </motion.span>
+                    )}
+                  </button>
+                </div>
 
-              {/* Socials */}
-              <div className="mt-8 flex justify-center gap-8">
-                <a
-                  href="#"
-                  className="hover:text-red-600 transition cursor-pointer"
-                >
-                  <Instagram />
-                </a>
-                <a
-                  href="#"
-                  className="hover:text-red-600 transition cursor-pointer"
-                >
-                  <Youtube />
-                </a>
-                <a
-                  href="#"
-                  className="hover:text-red-600 transition cursor-pointer"
-                >
-                  <Linkedin />
-                </a>
+                {/* Meta & Services */}
+                <div className="grid grid-cols-2 gap-6 pt-4 border-t border-white/5">
+                  <div className="space-y-1">
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-white/30">Location</p>
+                    <p className="text-sm text-white/70">Mumbai · Worldwide</p>
+                  </div>
+                  <div className="space-y-1 text-right">
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-white/30">Availability</p>
+                    <p className="text-sm text-green-500/80">Q2 2026 Open</p>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 text-center">Projects</p>
+                  <p className="text-sm text-white/50 text-center leading-relaxed italic">
+                    Brand Films · Commercials · Fashion · Social
+                  </p>
+                </div>
+
+                {/* Footer Actions */}
+                <div className="flex items-center gap-4 pt-4">
+                  <div className="flex gap-4">
+                    {[Instagram, Youtube, Linkedin].map((Icon, i) => (
+                      <a
+                        key={i}
+                        href="#"
+                        className="p-3 rounded-full bg-white/5 border border-white/5 hover:text-red-500 hover:border-red-500/30 transition-all"
+                      >
+                        <Icon size={18} />
+                      </a>
+                    ))}
+                  </div>
+
+                  <a
+                    href="https://wa.me/919XXXXXXXXX"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-3 bg-red-500 hover:bg-red-600 text-white font-techno uppercase tracking-widest text-xs py-4 rounded-full transition-all shadow-lg shadow-red-500/20"
+                  >
+                    <MessageSquare size={16} />
+                    WhatsApp
+                  </a>
+                </div>
               </div>
-
-              {/* CTA */}
-              <a
-                href="https://wa.me/919XXXXXXXXX"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-8 inline-block w-full rounded-full border border-white/20 py-3 text-center hover:bg-white hover:text-black transition"
-              >
-                Chat on WhatsApp →
-              </a>
             </div>
           </motion.div>
         </>
@@ -131,3 +140,4 @@ export const ContactSheet = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 };
+

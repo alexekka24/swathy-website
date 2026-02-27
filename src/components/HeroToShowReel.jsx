@@ -25,6 +25,20 @@ export const HeroToShowreel = () => {
 
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
+      // Initial entrance animation
+      gsap.from("#hero-name-swathy", {
+        x: -200,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4.out",
+      });
+      gsap.from("#hero-name-deepak", {
+        x: 200,
+        opacity: 0,
+        duration: 1.5,
+        ease: "power4.out",
+      });
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -47,6 +61,10 @@ export const HeroToShowreel = () => {
         ease: "none",
       });
 
+      // Swathy Deepak move apart on scroll
+      tl.to("#hero-name-swathy", { x: -300, ease: "none" }, "<");
+      tl.to("#hero-name-deepak", { x: 300, ease: "none" }, "<");
+
       // Pinhole opens
       // tl.to("#pinhole-mask", {
 
@@ -58,8 +76,11 @@ export const HeroToShowreel = () => {
       mm.add("(min-width: 768px)", () => {
         // DESKTOP ONLY
         tl.to("#pinhole-mask", {
-          clipPath: "circle(70vw at 50% 50%)",
-          ease: "none",
+          // clipPath: "circle(70vw at 50% 50%)",
+          clipPath: "none",
+          backgroundColor: "#000",
+          opacity: 1,
+          ease: "power2.out",
         });
       });
 
@@ -124,9 +145,9 @@ export const HeroToShowreel = () => {
         id="hero-text"
         className="pointer-events-none relative z-30 h-full flex flex-col items-center justify-center text-center text-white"
       >
-        <p className="absolute font-bold text-4xl md:text-8xl tracking-wide flex gap-10 md:gap-25 text-red-500 font-cursive animation animate-bounce">
-          <span>Swathy</span>
-          <span>Deepak</span>
+        <p className="absolute font-bold text-4xl md:text-8xl tracking-wide flex gap-10 md:gap-25 text-red-500 font-cursive">
+          <span id="hero-name-swathy">Swathy</span>
+          <span id="hero-name-deepak">Deepak</span>
         </p>
         <h1 className="text-[clamp(2rem,6vw,6rem)] font-techno uppercase mb-4">
           <div>Director</div>

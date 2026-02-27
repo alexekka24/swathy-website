@@ -1,49 +1,58 @@
+import { motion } from "framer-motion";
+
 export const AboutSection = () => {
   return (
-    <section className="relative py-24 md:py-32 px-4 bg-black text-white border-t border-white/10">
-      <div className="container mx-auto max-w-6xl">
-        {/* Section Header */}
-        <div className="mb-16 max-w-xl mx-auto md:mx-0 text-center md:text-left">
-          {/* <p className="text-sm uppercase tracking-widest text-white/50">
-            Get to know me
-          </p> */}
-          <h2 className="font-techno mt-3 text-4xl md:text-5xl leading-tight">
+    <section className="relative py-24 md:py-32 px-4 bg-black text-white border-t border-white/10 overflow-hidden">
+      {/* Background Texture */}
+      <div className="absolute inset-0 film-grain pointer-events-none opacity-20" />
+
+      <div className="container mx-auto max-w-6xl relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16 max-w-xl mx-auto md:mx-0 text-center md:text-left"
+        >
+          <h2 className="font-techno mt-3 text-4xl md:text-6xl uppercase tracking-tighter">
             About Me
           </h2>
-          <p className="mt-4 text-white/60 font-cursive">
+          <p className="mt-4 text-white/60 font-cursive text-xl">
             Visual storytelling through motion, light, and emotion.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Left: Text */}
-          <div className="space-y-6 text-center md:text-left">
-            <h3 className="text-2xl font-semibold">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6 text-center md:text-left"
+          >
+            <h3 className="text-2xl md:text-3xl font-semibold text-red-500 uppercase font-techno tracking-tighter">
               Cinematographer & Visual Storyteller
             </h3>
 
-            <p className="text-white/70 leading-relaxed max-w-xl mx-auto md:mx-0">
+            <p className="text-white/70 leading-relaxed max-w-xl mx-auto md:mx-0 text-lg">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Assumenda, doloribus! I craft cinematic visuals that elevate
               brands and tell compelling stories.
             </p>
 
-            <p className="text-white/70 leading-relaxed max-w-xl mx-auto md:mx-0">
+            <p className="text-white/70 leading-relaxed max-w-xl mx-auto md:mx-0 text-lg">
               From fashion films to commercial narratives, my work focuses on
               emotion, texture, and rhythm.
             </p>
+          </motion.div>
 
-            {/* CTA */}
-            {/* <div className="pt-6 flex justify-center md:justify-start">
-              <a href="#contact" className="cosmic-button">
-                Get in Touch
-              </a>
-            </div> */}
-          </div>
-
-          {/* Right: Portrait */}
-          <div className="flex justify-center md:justify-end">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="flex justify-center md:justify-end"
+          >
             <div className="relative overflow-hidden rounded-3xl aspect-3/4 w-full max-w-sm group">
               <img
                 src="/assets/images/image1.jpg"
@@ -56,9 +65,10 @@ export const AboutSection = () => {
               />
               <div className="absolute inset-0 bg-black/20 pointer-events-none" />
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
+

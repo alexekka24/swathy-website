@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigation } from "react-router-dom";
+import { Outlet, useLocation, useNavigation, useMatches } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect } from "react";
 import { Navbar } from "./Navbar";
@@ -9,7 +9,15 @@ import CinematicSvgBackground from "./CinematicSvgBackground";
 export const AppLayout = () => {
   const location = useLocation();
   const navigation = useNavigation();
+  const matches = useMatches();
 
+  useEffect(() => {
+      const lastMatch = matches[matches.length - 1];
+      const title = lastMatch?.handle?.title;
+  
+      if (title) document.title = title;
+    }, [matches]);
+    
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);

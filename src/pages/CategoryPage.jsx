@@ -21,7 +21,7 @@ export const CategoryPage = () => {
       {/* Page Header / Intro */}
       <section className="relative flex items-center justify-center px-6 py-24 md:py-32">
         <div className="max-w-4xl text-center">
-          <h1 className="font-techno max-sm:text-4xl md:text-6xl lg:text-[10rem] tracking-tight text-shadow-md text-shadow-white/30 font-display animate-bounce">
+          <h1 className="font-techno max-sm:text-4xl md:text-6xl lg:text-[10rem] tracking-tight text-shadow-md text-shadow-white/30 font-display">
             {data.title}
           </h1>
           <p className="mt-4 text-white/70 text-base md:text-lg">

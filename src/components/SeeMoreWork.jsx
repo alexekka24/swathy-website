@@ -37,12 +37,13 @@ export const SeeMoreWork = () => {
           transition={{ duration: 0.8 }}
           className="text-center max-w-4xl mx-auto mb-16"
         >
-          <h2 className="font-techno text-4xl md:text-7xl uppercase tracking-tighter leading-tight">
-            Hungry for <span className="text-red-500 italic block md:inline underline underline-offset-8">More?</span>
+          <h2 className="font-rose text-4xl md:text-9xl tracking-wider leading-tight">
+            {/* Hungry for <span className="text-red-500 italic block md:inline underline underline-offset-8">More?</span> */}
+            Explore Collection
           </h2>
-          <p className="mt-6 text-xl md:text-2xl text-white/60 font-cursive">
+          {/* <p className="mt-6 text-xl md:text-2xl text-white/60 font-cursive">
             Explore my full collection of cinematic works.
-          </p>
+          </p> */}
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

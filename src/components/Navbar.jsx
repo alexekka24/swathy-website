@@ -74,10 +74,10 @@ export const Navbar = () => {
         <div className="container flex items-center justify-between">
           <NavLink
             to="/"
-            className="text-2xl md:text-3xl text-primary flex items-center transition-opacity hover:opacity-70"
+            className="text-2xl md:text-4xl flex items-center transition-opacity hover:opacity-70 font-rose tracking-wider"
             onClick={() => setIsMenuOpen(false)}
           >
-            <span className="font-cursive">Swathy Deepak</span>
+            <span>Swathy Deepak</span>
           </NavLink>
 
           <button
@@ -93,7 +93,7 @@ export const Navbar = () => {
                     initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -20, opacity: 0 }}
-                    className="flex flex-col font-techno text-xl md:text-3xl leading-none tracking-tighter text-right"
+                    className="flex flex-col font-techno text-xl md:text-3xl leading-none tracking-wider text-right"
                   >
                     <span>ME</span>
                     <span>NU.</span>
@@ -110,20 +110,6 @@ export const Navbar = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
-            <div className="flex flex-col gap-1.5 justify-center items-end w-8 h-8">
-              <motion.span
-                animate={isMenuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                className="w-8 h-0.5 bg-red-500 block transition-transform"
-              />
-              <motion.span
-                animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="w-6 h-0.5 bg-red-500 block"
-              />
-              <motion.span
-                animate={isMenuOpen ? { rotate: -45, y: -8, width: "2rem" } : { rotate: 0, y: 0, width: "1.25rem" }}
-                className="h-0.5 bg-red-500 block transition-all"
-              />
             </div>
           </button>
         </div>

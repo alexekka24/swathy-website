@@ -12,12 +12,12 @@ export const AboutSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mb-16 max-w-xl mx-auto md:mx-0 text-center md:text-left"
+          className="mb-10 max-w-xl mx-auto md:mx-0 text-center md:text-left"
         >
-          <h2 className="font-techno mt-3 text-4xl md:text-6xl uppercase tracking-tighter">
+          <h2 className="font-rose mt-3 text-4xl md:text-9xl tracking-tighter text-red-500/70">
             About Me
           </h2>
-          <p className="mt-4 text-white/60 font-cursive text-xl">
+          <p className="mt-4 text-white/60 font-cursive text-3xl">
             Visual storytelling through motion, light, and emotion.
           </p>
         </motion.div>
@@ -30,8 +30,8 @@ export const AboutSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="space-y-6 text-center md:text-left"
           >
-            <h3 className="text-2xl md:text-3xl font-semibold text-red-500 uppercase font-techno tracking-tighter">
-              Cinematographer & Visual Storyteller
+            <h3 className="text-2xl md:text-8xl text-red-500/70 font-rose tracking-wider">
+              Cinematographer Visual Storyteller
             </h3>
 
             <p className="text-white/70 leading-relaxed max-w-xl mx-auto md:mx-0 text-lg">
@@ -54,9 +54,12 @@ export const AboutSection = () => {
             className="flex justify-center md:justify-end"
           >
             <div className="relative overflow-hidden rounded-3xl aspect-3/4 w-full max-w-sm group">
-              <img
-                src="/assets/images/image1.jpg"
+              <video
+                src="/assets/videos/about-me.mp4"
                 alt="Swathy Deepak portrait"
+                autoPlay
+                muted
+                loop
                 className="
                 h-full w-full object-cover
                 grayscale transition-all duration-700

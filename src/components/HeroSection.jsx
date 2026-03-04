@@ -25,13 +25,13 @@ export const HeroSection = () => {
           <h1 className="text-[clamp(3rem,8vw,6rem)] font-techno uppercase mb-4">
             <div>
               Director
-              </div> 
-              <div>
+            </div>
+            <div>
               of
-              </div> 
-              <div>
+            </div>
+            <div>
               Photography
-              </div> 
+            </div>
           </h1>
         </div>
       </section>

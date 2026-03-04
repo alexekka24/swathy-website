@@ -3,12 +3,22 @@ import { categories } from "../data/categories";
 import { ProjectGrid } from "../components/ProjectGrid";
 import { useState } from "react";
 import { ProjectCarouselModal } from "../components/ProjectCarouselModal";
+import { useSEO } from "../utils/useSEO";
 
 export const CategoryPage = () => {
   const { category } = useParams();
   const data = categories[category];
 
   const [activeIndex, setActiveIndex] = useState(null);
+
+  // Dynamic SEO for each category page
+  useSEO({
+    title: data ? `${data.title} | Swathy Deepak` : "Swathy Deepak",
+    description: data
+      ? `${data.subtitle} — Cinematography and visual storytelling by Swathy Deepak, Director of Photography.`
+      : "Visual storytelling and cinematography by Swathy Deepak.",
+    url: category ? `/${category}` : "/",
+  });
 
   if (!data) {
     return <Navigate to="/" replace />;

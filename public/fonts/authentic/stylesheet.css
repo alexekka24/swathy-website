@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Authentic';
+    src: url('Authentic-Signature.woff2') format('woff2'),
+        url('Authentic-Signature.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

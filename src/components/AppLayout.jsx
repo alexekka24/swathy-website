@@ -4,36 +4,65 @@ import { useEffect } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import WhatsAppFloatingButton from "./WhatsAppFloatingButton";
-import CinematicSvgBackground from "./CinematicSvgBackground";
+import { useSEO } from "../utils/useSEO";
+
+// JSON-LD Structured Data — Person schema for Swathy Deepak
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Swathy Deepak",
+  jobTitle: "Director of Photography",
+  url: "https://swathydeepak.com",
+  sameAs: [
+    "https://www.instagram.com/swathydeepak",
+    "https://www.youtube.com/@swathydeepak",
+    "https://www.linkedin.com/in/swathydeepak",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Mumbai",
+    addressCountry: "IN",
+  },
+  knowsAbout: [
+    "Cinematography",
+    "Director of Photography",
+    "Fashion Film",
+    "Brand Film",
+    "Short Films",
+    "Visual Storytelling",
+  ],
+};
 
 export const AppLayout = () => {
   const location = useLocation();
   const navigation = useNavigation();
   const matches = useMatches();
 
-  useEffect(() => {
-      const lastMatch = matches[matches.length - 1];
-      const title = lastMatch?.handle?.title;
-  
-      if (title) document.title = title;
-    }, [matches]);
-    
+  // Get SEO data from current route handle
+  const lastMatch = matches[matches.length - 1];
+  const handle = lastMatch?.handle ?? {};
+
+  useSEO({
+    title: handle.title,
+    description: handle.description,
+    url: handle.url || location.pathname,
+    ogImage: handle.ogImage,
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  {
-    navigation.state === "loading" && (
-      <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50" />
-    );
-  }
-
   return (
     <div className="min-h-screen">
-      {/* <CinematicSvgBackground /> */}
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
+
       <Navbar />
 
-      {/* 🔥 Animated Routes */}
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}

@@ -3,13 +3,21 @@
 @font-face {
   font-family: "TheLedDisplaySt";
   src: url("/fonts/TheLedDisplaySt.woff2") format("woff2"),
-       url("/fonts/TheLedDisplaySt.woff") format("woff");
-  font-display: swap;     
-} 
+    url("/fonts/TheLedDisplaySt.woff") format("woff");
+  font-display: swap;
+}
 
 @font-face {
-  font-family: "Rosellinda";
-  src: url("/fonts/RoasellindaAlyamore.otf") format("otf");
+  font-family: "RosellindaAlyamore";
+  src: url("/fonts/rosellinda_alyamore/RosellindaAlyamore.woff") format("woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "AuthenticSignature";
+  src: url("/fonts/authentic/Authentic-Signature.woff") format("woff2"),
+    url("/fonts/authentic/Authentic-Signature.woff") format("woff");
+  font-display: swap;
 }
 
 @theme {
@@ -18,7 +26,8 @@
   --font-pixel: "Press Start 2P", monospace;
   --font-retro: "VT323", monospace;
   --font-cursive: "Allura", cursive;
-  --font-rose: Rosellinda, "sans-serif";
+  --font-rose: RosellindaAlyamore, "sans-serif";
+  --font-signature: AuthenticSignature, "cursive";
 }
 
 
@@ -27,6 +36,24 @@ body {
   font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
   background-color: #212121;
 }
+
+/* Red gradient separator at the top of every section */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(239, 68, 68, 0.4), transparent);
+  z-index: 20;
+  pointer-events: none;
+}
+
+section {
+  position: relative;
+}
+
 
 @theme {
   --color-border: hsl(var(--border));
@@ -38,21 +65,26 @@ body {
 
   --color-card: hsl(var(--card));
 }
+
 @keyframes float {
+
   0%,
   100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes pulse-subtle {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     transform: 0.8;
   }
@@ -63,6 +95,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -74,9 +107,11 @@ body {
     transform: rotate(215deg) translateX(0);
     opacity: 1;
   }
+
   70% {
     opacity: 1;
   }
+
   100% {
     transform: rotate(215deg) translateX(-500px);
     opacity: 0;
@@ -129,21 +164,27 @@ body {
 }
 
 .cinematic-bg {
-  background: linear-gradient(
-    -45deg,
-    #050505,
-    #0b1020,
-    #120b1a,
-    #050505
-  );
+  background: linear-gradient(-45deg,
+      #050505,
+      #0b1020,
+      #120b1a,
+      #050505);
   background-size: 400% 400%;
   animation: gradientMove 25s ease infinite;
 }
 
 @keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
@@ -151,19 +192,23 @@ body {
   margin-inline: auto;
   padding-inline: 2rem;
 
-  @media (width >= 640px) {
+  @media (width >=640px) {
     max-width: 640px;
   }
-  @media (width >= 768px) {
+
+  @media (width >=768px) {
     max-width: 768px;
   }
-  @media (width >= 1024px) {
+
+  @media (width >=1024px) {
     max-width: 1024px;
   }
-  @media (width >= 1280px) {
+
+  @media (width >=1280px) {
     max-width: 1280px;
   }
-  @media (width >= 1400px) {
+
+  @media (width >=1400px) {
     max-width: 1400px;
   }
 }
@@ -186,7 +231,7 @@ body {
 }
 
 @utility cosmic-button {
-  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:shadow-[0_0_10px_rgba(139,92,246,0.5)] hover:scale-105 active:scale-95;
+  @apply px-6 py-2 rounded-full bg-primary text-primary-foreground font-medium transition-all duration-300 hover:scale-105 active:scale-95;
 }
 
 #root {
@@ -210,18 +255,23 @@ body {
   0% {
     transform: translate(0, 0);
   }
+
   20% {
     transform: translate(-5%, -5%);
   }
+
   40% {
     transform: translate(5%, -10%);
   }
+
   60% {
     transform: translate(-10%, 5%);
   }
+
   80% {
     transform: translate(10%, 10%);
   }
+
   100% {
     transform: translate(0, 0);
   }

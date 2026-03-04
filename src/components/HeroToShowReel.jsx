@@ -121,7 +121,7 @@ export const HeroToShowreel = () => {
         // src="/assets/videos/showReel.mp4"
         src={
           isPortrait
-            ? "/assets/videos/showReel-potrait.mp4"
+            ? "/assets/videos/background-portrait.mp4"
             : "/assets/videos/showReel.mp4"
         }
         autoPlay
@@ -145,7 +145,7 @@ export const HeroToShowreel = () => {
         id="hero-text"
         className="pointer-events-none relative z-30 h-full flex flex-col items-center justify-center text-center text-white"
       >
-        <p className="absolute font-bold text-4xl md:text-8xl tracking-wide flex gap-10 md:gap-25 text-red-500 font-cursive">
+        <p className="absolute text-4xl md:text-8xl tracking-wide flex gap-10 md:gap-25 text-red-500 font-rose">
           <span id="hero-name-swathy">Swathy</span>
           <span id="hero-name-deepak">Deepak</span>
         </p>
@@ -174,7 +174,7 @@ export const HeroToShowreel = () => {
             </h2>
           </div>
 
-          <div id="showreel-video" className="absolute inset-0 opacity-0">
+          <div id="showreel-video" className="absolute inset-0 opacity-0 pointer-events-auto">
             <ShowReelSection />
           </div>
         </div>
